@@ -1,0 +1,35 @@
+vllm/config/fault_tolerance.py
+  h_ad66a26c65370e 19-23
+vllm/v1/fault_tolerance/engine_core_sentinel.py
+  s_f36a1e88bd2db9::t_3e8c9d7af4046f 9
+vllm/v1/worker/sentinel/gpu_worker_sentinel.py
+  h_ad66a26c65370e 73-74,85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "9e695c44f383cec9906c295bd8c6ab3b50e55d30",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_f36a1e88bd2db9": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-85487d9f-1108-47fe-8e4d-0fcfa665f254",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "source_scene": "cue",
+        "client_type": "ide",
+        "edit_kind": "file_edit",
+        "tool": "trae-cue",
+        "external_session_id": "icr-85487d9f-1108-47fe-8e4d-0fcfa665f254"
+      }
+    }
+  }
+}
