@@ -1,0 +1,202 @@
+vllm/v1/executor/multiproc_executor.py
+  s_91f10655b97262::t_d8dcf20a2f1cf5 324
+  s_24ff7133a25e1f::t_ed9988963384ab 1007
+  s_5139946e8d03cd::t_ea3b81296aa372 1023
+  s_5139946e8d03cd::t_b9fe2cccd6eb8d 1017
+  s_82ae6502302bfe::t_becdad0fdf6c73 1025
+  h_ad66a26c65370e 976,986
+  s_900b589dfdb05a::t_1eadbf9f67842f 975
+  s_148804b5701087::t_eecd9e0971c29e 337
+  s_63e2946a87f518::t_5a6a4b2ce7dbb7 348
+  s_9311624550b485::t_adda031969f143 1006
+  s_a860cb13d56aed::t_e9b0e9e61740ff 624
+  s_7f47bad29b5152::t_ca4f9e8c4e95f3 985
+  s_a860cb13d56aed::t_6120ba7a1abe44 621-623
+vllm/v1/engine/core.py
+  s_dae2620ef5ff68::t_af4af3584151cd 654-663
+  s_dae2620ef5ff68::t_4f0b35ef4526fb 664
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "bb40a8b32c8fd14592a69c5719b877972469d767",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_148804b5701087": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-d83c3437-f049-455d-9ef3-7a5e35d423dd",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "client_type": "ide",
+        "external_session_id": "icr-d83c3437-f049-455d-9ef3-7a5e35d423dd",
+        "tool": "trae-cue",
+        "edit_kind": "file_edit",
+        "source_scene": "cue"
+      }
+    },
+    "s_24ff7133a25e1f": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-1e88667f-7b9a-404f-9c94-5d0728e24aae",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "source_scene": "cue",
+        "tool": "trae-cue",
+        "edit_kind": "file_edit",
+        "client_type": "ide",
+        "external_session_id": "icr-1e88667f-7b9a-404f-9c94-5d0728e24aae"
+      }
+    },
+    "s_5139946e8d03cd": {
+      "agent_id": {
+        "tool": "trae-code-edit",
+        "id": "ai_tab-20260826161222010003155071936C7F5",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "edit_kind": "file_edit",
+        "source_scene": "cue",
+        "client_type": "ide",
+        "tool": "trae-code-edit",
+        "external_session_id": "20260826161222010003155071936C7F5"
+      }
+    },
+    "s_63e2946a87f518": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-50507f7e-a10c-46be-8cc6-6236f2505744",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "edit_kind": "file_edit",
+        "client_type": "ide",
+        "source_scene": "cue",
+        "tool": "trae-cue",
+        "external_session_id": "icr-50507f7e-a10c-46be-8cc6-6236f2505744"
+      }
+    },
+    "s_7f47bad29b5152": {
+      "agent_id": {
+        "tool": "trae-code-edit",
+        "id": "ai_tab-20260826161529010000252030877925F",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "source_scene": "cue",
+        "tool": "trae-code-edit",
+        "client_type": "ide",
+        "external_session_id": "20260826161529010000252030877925F",
+        "edit_kind": "file_edit"
+      }
+    },
+    "s_82ae6502302bfe": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-9783a941-b5ae-433e-9d0b-ed12130cbe1c",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "external_session_id": "icr-9783a941-b5ae-433e-9d0b-ed12130cbe1c",
+        "edit_kind": "file_edit",
+        "tool": "trae-cue",
+        "source_scene": "cue",
+        "client_type": "ide"
+      }
+    },
+    "s_900b589dfdb05a": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-e440d2c1-1529-42ae-bde3-ebc14101f72a",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "client_type": "ide",
+        "source_scene": "cue",
+        "external_session_id": "icr-e440d2c1-1529-42ae-bde3-ebc14101f72a",
+        "tool": "trae-cue",
+        "edit_kind": "file_edit"
+      }
+    },
+    "s_91f10655b97262": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-f6edbd4d-ff08-4237-b28f-0098ee749ed3",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "edit_kind": "file_edit",
+        "source_scene": "cue",
+        "external_session_id": "icr-f6edbd4d-ff08-4237-b28f-0098ee749ed3",
+        "client_type": "ide",
+        "tool": "trae-cue"
+      }
+    },
+    "s_9311624550b485": {
+      "agent_id": {
+        "tool": "trae-code-edit",
+        "id": "ai_tab-202608261616380100021522060796138",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "client_type": "ide",
+        "edit_kind": "file_edit",
+        "source_scene": "cue",
+        "tool": "trae-code-edit",
+        "external_session_id": "202608261616380100021522060796138"
+      }
+    },
+    "s_a860cb13d56aed": {
+      "agent_id": {
+        "tool": "trae-code-edit",
+        "id": "ai_tab-2026082616141801000215220691538D3",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "external_session_id": "2026082616141801000215220691538D3",
+        "client_type": "ide",
+        "edit_kind": "file_edit",
+        "source_scene": "cue",
+        "tool": "trae-code-edit"
+      }
+    },
+    "s_dae2620ef5ff68": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a8d07157bc731d721251f60",
+        "model": "deepseek-V4-Pro"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "source_scene": "agent",
+        "session_id": "6a8d07157bc731d721251f60",
+        "tool_type": "builtin",
+        "runtime_client": "trae-tob-git-ai",
+        "tool_id": "icube:applyChatSnapshotPatch",
+        "tool_use_id": "6a8e96577bc731d721252196",
+        "external_session_id": "6a8d07157bc731d721251f60",
+        "client_type": "ide",
+        "operation_id": "6a8e96577bc731d721252196",
+        "edit_kind": "file_edit",
+        "dedupe_key": "6a8d07157bc731d721251f60:6a8e96577bc731d721252196:afterEdit:f1e38908"
+      }
+    }
+  }
+}
