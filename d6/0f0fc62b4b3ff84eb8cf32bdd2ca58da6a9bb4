@@ -1,0 +1,37 @@
+vllm/v1/executor/multiproc_executor.py
+  s_53ba11096e03af::t_d23011b7dfb6be 422-427,430,436-440
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "d60f0fc62b4b3ff84eb8cf32bdd2ca58da6a9bb4",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_53ba11096e03af": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a911ef67bc731d7212527bc",
+        "model": "glm-5.3__dev"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "tool_type": "agent",
+        "tool_use_id": "6a9bde5470169d284d6349b8",
+        "source_scene": "unknown",
+        "tool_id": "Edit",
+        "session_id": "6a911ef67bc731d7212527bc",
+        "runtime_client": "trae-tob-git-ai",
+        "operation_id": "6a9bde5470169d284d6349b8",
+        "client_type": "ide",
+        "edit_kind": "file_edit",
+        "external_session_id": "6a911ef67bc731d7212527bc",
+        "dedupe_key": "6a911ef67bc731d7212527bc:6a9bde5470169d284d6349b8:afterEdit:81a20da7"
+      }
+    }
+  }
+}
