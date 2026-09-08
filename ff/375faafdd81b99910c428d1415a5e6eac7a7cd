@@ -1,0 +1,32 @@
+vllm/v1/executor/multiproc_executor.py
+  s_ef880d1f24dc97::t_71a77689e5e1d8 1103
+  s_ef880d1f24dc97::t_6f11fa52dcd690 1104
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "ff375faafdd81b99910c428d1415a5e6eac7a7cd",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_ef880d1f24dc97": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-f2e490ba-b8d2-48b2-8bda-1ce31502095c",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "edit_kind": "file_edit",
+        "client_type": "ide",
+        "source_scene": "cue",
+        "external_session_id": "icr-f2e490ba-b8d2-48b2-8bda-1ce31502095c",
+        "tool": "trae-cue"
+      }
+    }
+  }
+}
