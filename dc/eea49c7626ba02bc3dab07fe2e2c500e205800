@@ -1,0 +1,64 @@
+vllm/v1/worker/sentinel/gpu_worker_sentinel.py
+  s_53ba11096e03af::t_4bb6940f2aeafc 70
+vllm/v1/worker/gpu_worker.py
+  s_53ba11096e03af::t_9832477027ce39 1026-1029
+  s_53ba11096e03af::t_438bb46ee73966 1030,1033,1042
+  s_53ba11096e03af::t_a39196fdafc1eb 156
+  s_53ba11096e03af::t_75925ad3d5a343 1034-1041
+  s_53ba11096e03af::t_faffaad0a764e0 1032
+  s_757d605f5c5c9a::t_cb5a23d4241962 1031
+  s_53ba11096e03af::t_8ab75e70793c54 153-155
+  s_53ba11096e03af::t_5c82cd51d76140 1043
+vllm/v1/executor/multiproc_executor.py
+  s_53ba11096e03af::t_bff34425f1891b 1021
+  s_53ba11096e03af::t_c2e1c131cd7249 1101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "dceea49c7626ba02bc3dab07fe2e2c500e205800",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_53ba11096e03af": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a911ef67bc731d7212527bc",
+        "model": "glm-5.3__dev"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "runtime_client": "trae-tob-git-ai",
+        "tool_id": "Edit",
+        "external_session_id": "6a911ef67bc731d7212527bc",
+        "dedupe_key": "6a911ef67bc731d7212527bc:6a9fccfc70169d284d634eb1:afterEdit:7fc62bee",
+        "operation_id": "6a9fccfc70169d284d634eb1",
+        "edit_kind": "file_edit",
+        "tool_use_id": "6a9fccfc70169d284d634eb1",
+        "session_id": "6a911ef67bc731d7212527bc",
+        "source_scene": "unknown",
+        "client_type": "ide",
+        "tool_type": "agent"
+      }
+    },
+    "s_757d605f5c5c9a": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-5acadbd5-551e-4644-9483-26815321b79f",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "tool": "trae-cue",
+        "external_session_id": "icr-5acadbd5-551e-4644-9483-26815321b79f",
+        "client_type": "ide",
+        "source_scene": "cue",
+        "edit_kind": "file_edit"
+      }
+    }
+  }
+}
