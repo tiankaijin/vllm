@@ -1,0 +1,37 @@
+vllm/v1/worker/gpu_worker.py
+  s_53ba11096e03af::t_7239d3209d0360 1188-1191
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "08092f58f074a653dd776e5c45736d949ff40bc2",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_53ba11096e03af": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a911ef67bc731d7212527bc",
+        "model": "glm-5.3__dev"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "operation_id": "6a9ff03770169d284d634ee5",
+        "external_session_id": "6a911ef67bc731d7212527bc",
+        "tool_use_id": "6a9ff03770169d284d634ee5",
+        "edit_kind": "file_edit",
+        "client_type": "ide",
+        "dedupe_key": "6a911ef67bc731d7212527bc:6a9ff03770169d284d634ee5:afterEdit:7fc62bee",
+        "source_scene": "unknown",
+        "session_id": "6a911ef67bc731d7212527bc",
+        "tool_type": "agent",
+        "tool_id": "Edit",
+        "runtime_client": "trae-tob-git-ai"
+      }
+    }
+  }
+}
