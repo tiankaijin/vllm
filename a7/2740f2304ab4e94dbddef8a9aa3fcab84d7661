@@ -1,0 +1,32 @@
+vllm/v1/executor/multiproc_executor.py
+  s_af24a17dc67072::t_c4d63ad6adbab5 1139-1140
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "a72740f2304ab4e94dbddef8a9aa3fcab84d7661",
+  "prompts": {},
+  "sessions": {
+    "s_af24a17dc67072": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6aa362f38fe7cad2b452bd7b",
+        "model": "glm-5.3__dev"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "tool_use_id": "6aa36a4b8fe7cad2b452be2a",
+        "operation_id": "6aa36a4b8fe7cad2b452be2a",
+        "runtime_client": "trae-tob-git-ai",
+        "dedupe_key": "6aa362f38fe7cad2b452bd7b:6aa36a4b8fe7cad2b452be2a:afterEdit:ffa8223d",
+        "client_type": "ide",
+        "edit_kind": "file_edit",
+        "tool_type": "agent",
+        "tool_id": "Edit",
+        "source_scene": "unknown",
+        "external_session_id": "6aa362f38fe7cad2b452bd7b",
+        "session_id": "6aa362f38fe7cad2b452bd7b"
+      }
+    }
+  }
+}
