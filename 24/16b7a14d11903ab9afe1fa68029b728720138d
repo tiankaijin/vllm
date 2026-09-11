@@ -1,0 +1,14 @@
+vllm/v1/executor/multiproc_executor.py
+  h_ad66a26c65370e 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "2416b7a14d11903ab9afe1fa68029b728720138d",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  }
+}
