@@ -1,0 +1,91 @@
+vllm/v1/fault_tolerance/engine_core_sentinel.py
+  s_af24a17dc67072::t_e5897b0638e1ad 90
+  s_af24a17dc67072::t_047dd04832033c 9,25
+  s_af24a17dc67072::t_1ba1ab3d4bf9d9 8,92,109-142,167
+vllm/v1/worker/gpu/async_utils.py
+  s_af24a17dc67072::t_cbb82e530c3b2c 209-217,262-272
+  s_af24a17dc67072::t_728f739a9a3fc8 15
+vllm/v1/worker/gpu_worker.py
+  s_af24a17dc67072::t_5652013f8785f6 1307-1310
+  s_af24a17dc67072::t_7a3c0a4595d15c 1125-1128,1133-1145
+  s_af24a17dc67072::t_ee959645ffc2ac 1305,1311
+  s_af24a17dc67072::t_bc73b0fd7fe3f3 1306
+  s_af24a17dc67072::t_1faf8da2624a10 1129-1132
+vllm/config/fault_tolerance.py
+  s_af24a17dc67072::t_047dd04832033c 18
+vllm/v1/worker/sentinel/gpu_worker_sentinel.py
+  s_af24a17dc67072::t_dc322e27cede2e 50,52-53
+  s_af24a17dc67072::t_5c5e50afdbd6f6 51
+vllm/v1/worker/kv_connector_model_runner_mixin.py
+  s_af24a17dc67072::t_d9a5c8424d0a9d 95-104,106-109,111-116
+vllm/distributed/kv_transfer/kv_connector/utils.py
+  s_af24a17dc67072::t_cbb82e530c3b2c 64-69,166-174,191-241
+vllm/v1/outputs.py
+  s_af24a17dc67072::t_cbb82e530c3b2c 424-432
+vllm/v1/worker/gpu/model_runner.py
+  s_af24a17dc67072::t_9c377bc822efc3 351-352
+  s_af24a17dc67072::t_cfb0aa52416d5c 353
+vllm/v1/worker/gpu_model_runner.py
+  s_af24a17dc67072::t_ba5e8e340ad8f4 997-998
+  s_af24a17dc67072::t_cbb82e530c3b2c 397-407
+  s_af24a17dc67072::t_8bfbd1357d4c23 999
+vllm/v1/core/sched/scheduler.py
+  s_af24a17dc67072::t_8c646a42176bdf 3029-3042
+vllm/v1/executor/multiproc_executor.py
+  s_af24a17dc67072::t_cbb82e530c3b2c 72,78-89,440-441,450-490,1030,1045-1063,1143,1149
+  s_af24a17dc67072::t_8f214c63eb368f 1126
+  s_af24a17dc67072::t_04db9469e8eb60 1131-1142,1144-1148,1150-1151
+  s_af24a17dc67072::t_20401311113df7 1124-1125
+  s_af24a17dc67072::t_a01added88eadc 1044
+  s_af24a17dc67072::t_49916fff95badc 1042-1043
+  s_852875bd5a918d::t_d943633c59afaf 1122
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "570ea0ae85e42a308ae0e88b12cd10df12522d54",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_852875bd5a918d": {
+      "agent_id": {
+        "tool": "trae-code-edit",
+        "id": "ai_tab-2026091111185501000214424403128EF",
+        "model": "default"
+      },
+      "human_author": null,
+      "custom_attributes": {
+        "client_type": "ide",
+        "edit_kind": "file_edit",
+        "tool": "trae-code-edit",
+        "source_scene": "cue",
+        "external_session_id": "2026091111185501000214424403128EF"
+      }
+    },
+    "s_af24a17dc67072": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6aa362f38fe7cad2b452bd7b",
+        "model": "glm-5.3__dev"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "operation_id": "6aa3ab448fe7cad2b452bffd",
+        "session_id": "6aa362f38fe7cad2b452bd7b",
+        "dedupe_key": "6aa362f38fe7cad2b452bd7b:6aa3ab448fe7cad2b452bffd:afterEdit:855bdf1c",
+        "edit_kind": "file_edit",
+        "tool_use_id": "6aa3ab448fe7cad2b452bffd",
+        "external_session_id": "6aa362f38fe7cad2b452bd7b",
+        "tool_type": "agent",
+        "source_scene": "unknown",
+        "tool_id": "Write",
+        "client_type": "ide",
+        "runtime_client": "trae-tob-git-ai"
+      }
+    }
+  }
+}
