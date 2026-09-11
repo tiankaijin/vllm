@@ -1,0 +1,37 @@
+vllm/v1/fault_tolerance/engine_core_sentinel.py
+  s_53ba11096e03af::t_54dc42bf59231a 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "7c5c05bc2d8f7f8ebfcd11e40308db774cdfd2f4",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_53ba11096e03af": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a911ef67bc731d7212527bc",
+        "model": "glm-5.3__dev"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "tool_id": "Edit",
+        "operation_id": "6a9bd94370169d284d63498e",
+        "session_id": "6a911ef67bc731d7212527bc",
+        "runtime_client": "trae-tob-git-ai",
+        "external_session_id": "6a911ef67bc731d7212527bc",
+        "tool_type": "agent",
+        "tool_use_id": "6a9bd94370169d284d63498e",
+        "source_scene": "unknown",
+        "dedupe_key": "6a911ef67bc731d7212527bc:6a9bd94370169d284d63498e:afterEdit:bf2a2f64",
+        "edit_kind": "file_edit",
+        "client_type": "ide"
+      }
+    }
+  }
+}

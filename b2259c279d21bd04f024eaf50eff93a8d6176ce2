@@ -1,0 +1,52 @@
+vllm/v1/executor/multiproc_executor.py
+  s_53ba11096e03af::t_78884ea0509387 1024-1025
+  s_53ba11096e03af::t_77a12c5c1b2e93 1114
+  s_53ba11096e03af::t_893930558bec9d 1112-1113
+  s_53ba11096e03af::t_d995e4d8e9e342 1026
+vllm/v1/worker/gpu_model_runner.py
+  s_53ba11096e03af::t_f780f06b8d2a22 4188-4193,4211
+  s_53ba11096e03af::t_15dcaaf4251f49 955-960
+  s_53ba11096e03af::t_77587f63f4213b 4198-4210
+  s_53ba11096e03af::t_66ec21dc7d7864 4194-4197
+vllm/v1/worker/gpu/model_runner.py
+  s_53ba11096e03af::t_c35519c81167a0 1224-1230,1236-1237
+  s_53ba11096e03af::t_a93bc4ef8a8b26 1231-1235
+  s_53ba11096e03af::t_7d2d707a376a3b 280-286
+vllm/v1/worker/sentinel/gpu_worker_sentinel.py
+  s_53ba11096e03af::t_e98bee01035d6a 70
+  s_53ba11096e03af::t_0e25506fb9aeec 69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "b2259c279d21bd04f024eaf50eff93a8d6176ce2",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_53ba11096e03af": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a911ef67bc731d7212527bc",
+        "model": "glm-5.3__dev"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "runtime_client": "trae-tob-git-ai",
+        "client_type": "ide",
+        "tool_type": "agent",
+        "dedupe_key": "6a911ef67bc731d7212527bc:6a9f9aae70169d284d634cfa:afterEdit:81a20da7",
+        "tool_id": "Edit",
+        "source_scene": "unknown",
+        "edit_kind": "file_edit",
+        "tool_use_id": "6a9f9aae70169d284d634cfa",
+        "external_session_id": "6a911ef67bc731d7212527bc",
+        "session_id": "6a911ef67bc731d7212527bc",
+        "operation_id": "6a9f9aae70169d284d634cfa"
+      }
+    }
+  }
+}

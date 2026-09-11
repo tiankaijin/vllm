@@ -1,0 +1,32 @@
+vllm/v1/fault_tolerance/engine_core_sentinel.py
+  h_ad66a26c65370e 207
+  s_6a9bae06bc0bab::t_94f4b4005b833b 154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "ba86f44d505fead57c72ca244a261797f26c0d92",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_6a9bae06bc0bab": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-070f8d4c-346a-41a8-a020-dd74ec4ba51b",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "edit_kind": "file_edit",
+        "external_session_id": "icr-070f8d4c-346a-41a8-a020-dd74ec4ba51b",
+        "client_type": "ide",
+        "tool": "trae-cue",
+        "source_scene": "cue"
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+vllm/v1/worker/kv_connector_model_runner_mixin.py
+  s_53ba11096e03af::t_928ba15d7d9fa6 96-97
+  s_53ba11096e03af::t_f86a27c67162eb 98-105
+  s_53ba11096e03af::t_5942ea02089310 106-107,109-112,114-119
+vllm/v1/outputs.py
+  s_53ba11096e03af::t_b7dfcd419da820 336-344
+vllm/v1/executor/multiproc_executor.py
+  s_53ba11096e03af::t_0f402990dc9bc4 999
+  s_53ba11096e03af::t_8a12a4a015cbcc 428,437,439-440,442-449
+  s_53ba11096e03af::t_2bc31a0a85229e 1026-1029
+  s_53ba11096e03af::t_1c81a23fa87278 1099-1100,1104-1112
+  s_31030f2a2e010f::t_b87c620833ce06 426,435-436
+  s_cbb8b0dd842c48::t_f08cf6dc5b72e6 431-434
+  s_53ba11096e03af::t_641180c227af22 1018-1023
+  s_53ba11096e03af::t_01ffd75f7f559a 1011-1013,1017,1025
+  s_53ba11096e03af::t_79784515c2accc 441
+  s_53ba11096e03af::t_25e4deab5b7b7e 1014-1016
+  s_53ba11096e03af::t_afdade7aca920b 73-79
+  s_53ba11096e03af::t_40d7b06fde77ea 1101-1103,1113-1117
+  h_ad66a26c65370e 70-72,80-81,412,421-425,430,438,450-455,1024
+  s_53ba11096e03af::t_dd6947cc673573 411,429
+  s_53ba11096e03af::t_7e249e067c0a89 1096-1098
+vllm/v1/worker/gpu/async_utils.py
+  h_ad66a26c65370e 93-98,100,146-153,155
+  s_53ba11096e03af::t_76dd4787725ca7 92,99
+  s_53ba11096e03af::t_04c30e9c95d8b3 145,154
+vllm/distributed/kv_transfer/kv_connector/utils.py
+  s_53ba11096e03af::t_f39d00c6114cb6 63,65
+  s_53ba11096e03af::t_36c0620cccc2d8 196-199
+  s_53ba11096e03af::t_234af774f25ee5 225-226,237-239
+  s_53ba11096e03af::t_e326b2d4c327a0 191-192,194,200-208,210-215,221-224,227,231-232,236,240
+  s_53ba11096e03af::t_fe3c05802037ee 165-173
+  s_53ba11096e03af::t_040bc119e41849 64
+  s_53ba11096e03af::t_7ffa4309296441 209,216-220,228-230,233-235
+  s_53ba11096e03af::t_7f0ec76fb81e60 66-68
+  s_53ba11096e03af::t_a69b6eba0e24a8 190,193,195
+vllm/v1/worker/gpu_model_runner.py
+  s_53ba11096e03af::t_0899bf202be5cf 355-357
+  s_53ba11096e03af::t_1bb8cabe04d6ac 352-354,358,360,362
+  s_53ba11096e03af::t_d68309e6d33db2 359,361
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "3b0fc983fbc00fa21556501380441faf7c3bb63e",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_31030f2a2e010f": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-21e49984-a705-4037-9186-6666582935a7",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "tool": "trae-cue",
+        "source_scene": "cue",
+        "edit_kind": "file_edit",
+        "client_type": "ide",
+        "external_session_id": "icr-21e49984-a705-4037-9186-6666582935a7"
+      }
+    },
+    "s_53ba11096e03af": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a911ef67bc731d7212527bc",
+        "model": "glm-5.3__dev"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "runtime_client": "trae-tob-git-ai",
+        "client_type": "ide",
+        "edit_kind": "file_edit",
+        "tool_use_id": "6a9aca1770169d284d63488a",
+        "dedupe_key": "6a911ef67bc731d7212527bc:6a9aca1770169d284d63488a:afterEdit:81a20da7",
+        "operation_id": "6a9aca1770169d284d63488a",
+        "session_id": "6a911ef67bc731d7212527bc",
+        "tool_id": "Edit",
+        "external_session_id": "6a911ef67bc731d7212527bc",
+        "source_scene": "unknown",
+        "tool_type": "agent"
+      }
+    },
+    "s_cbb8b0dd842c48": {
+      "agent_id": {
+        "tool": "trae-code-edit",
+        "id": "ai_tab-20260904205958010002154055021545C",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "client_type": "ide",
+        "tool": "trae-code-edit",
+        "edit_kind": "file_edit",
+        "source_scene": "cue",
+        "external_session_id": "20260904205958010002154055021545C"
+      }
+    }
+  }
+}

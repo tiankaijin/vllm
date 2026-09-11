@@ -1,0 +1,102 @@
+vllm/v1/executor/multiproc_executor.py
+  s_59a6a56142d804::t_0e03bcc074d44e 446-447
+  s_43982b35e32889::t_e02400e3607b49 436
+  s_a8d2b9a0059704::t_36b1ace646dfaf 428
+  h_ad66a26c65370e 439
+  s_74f9eed9788a19::t_6923174458cc61 437
+  s_79b74e59de034a::t_cd81060c5120d0 438
+vllm/v1/worker/sentinel/gpu_worker_sentinel.py
+  h_ad66a26c65370e 73-74,85
+vllm/v1/fault_tolerance/engine_core_sentinel.py
+  h_ad66a26c65370e 88-97
+vllm/config/fault_tolerance.py
+  h_ad66a26c65370e 19-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "77ce785641bb14dc571d408d95cd98aea5b2f523",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_43982b35e32889": {
+      "agent_id": {
+        "tool": "trae-code-edit",
+        "id": "ai_tab-202608251149440100000200304711844",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "client_type": "ide",
+        "external_session_id": "202608251149440100000200304711844",
+        "source_scene": "cue",
+        "edit_kind": "file_edit",
+        "tool": "trae-code-edit"
+      }
+    },
+    "s_59a6a56142d804": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-e338acb6-6ecb-4cfd-ac15-84b825010952",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "tool": "trae-cue",
+        "client_type": "ide",
+        "edit_kind": "file_edit",
+        "source_scene": "cue",
+        "external_session_id": "icr-e338acb6-6ecb-4cfd-ac15-84b825010952"
+      }
+    },
+    "s_74f9eed9788a19": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-f6ab712e-5ad8-466f-b32d-781e9837397c",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "tool": "trae-cue",
+        "edit_kind": "file_edit",
+        "client_type": "ide",
+        "external_session_id": "icr-f6ab712e-5ad8-466f-b32d-781e9837397c",
+        "source_scene": "cue"
+      }
+    },
+    "s_79b74e59de034a": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-334157e4-9ea7-4a1c-956b-fa172eea4492",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "external_session_id": "icr-334157e4-9ea7-4a1c-956b-fa172eea4492",
+        "tool": "trae-cue",
+        "edit_kind": "file_edit",
+        "source_scene": "cue",
+        "client_type": "ide"
+      }
+    },
+    "s_a8d2b9a0059704": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-b73f56b6-fde1-42a7-a38e-907a17f9ecc5",
+        "model": "default"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "tool": "trae-cue",
+        "external_session_id": "icr-b73f56b6-fde1-42a7-a38e-907a17f9ecc5",
+        "source_scene": "cue",
+        "client_type": "ide",
+        "edit_kind": "file_edit"
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+vllm/v1/core/sched/scheduler.py
+  s_53ba11096e03af::t_04f1363c95dc53 2053
+  s_53ba11096e03af::t_8b3f620d07781c 2050
+  s_53ba11096e03af::t_1f24ddc792e188 2051-2052,2054-2061
+vllm/v1/fault_tolerance/engine_core_sentinel.py
+  s_53ba11096e03af::t_7ef5dd1a6c9bf8 93,96,99-100
+  s_53ba11096e03af::t_dcadab65130777 119,122
+  s_53ba11096e03af::t_422dfd5dd5fbc7 124-128,130-134
+  s_53ba11096e03af::t_5a92f4045f81ad 81,83
+  s_53ba11096e03af::t_003665c87bb0ef 88-90,101
+  h_ad66a26c65370e 80,82,84-87,111,113,117-118,121,129,135,185-211
+  s_53ba11096e03af::t_6474112155c5f2 91-92,94-95,97-98
+vllm/v1/outputs.py
+  s_53ba11096e03af::t_944aa7e7c998f7 310-313
+  h_ad66a26c65370e 314,347-348,350
+  s_53ba11096e03af::t_d1ece05190c26a 345-346,349
+  s_53ba11096e03af::t_e556ebb9799c21 315-318
+vllm/v1/worker/gpu/async_utils.py
+  s_53ba11096e03af::t_0a02eeb9b3031b 93-95
+  s_53ba11096e03af::t_b4b52779788eac 11
+  s_53ba11096e03af::t_2d0c4586945add 140-142
+vllm/v1/engine/core.py
+  h_ad66a26c65370e 609-610,612,614-619,727-728,730,732-736
+  s_53ba11096e03af::t_6e4653af29b4b8 611,613
+  s_53ba11096e03af::t_68e88877a12dc8 729,731
+vllm/v1/executor/multiproc_executor.py
+  s_53ba11096e03af::t_ac4a2b20900eff 962,970-976,978-979
+  s_53ba11096e03af::t_cd54057cd5fb33 1061
+  s_53ba11096e03af::t_ee4f64b150cfde 963-964
+  s_53ba11096e03af::t_634e2d30dc1036 1049
+  s_53ba11096e03af::t_43db9a53e42f0a 1048,1050-1060,1062-1070
+  s_53ba11096e03af::t_be9a331d163b54 977
+vllm/v1/worker/gpu_model_runner.py
+  s_53ba11096e03af::t_aa370c2e51feaf 352-354
+  s_53ba11096e03af::t_a2bdef194e5fa6 439-441
+vllm/distributed/kv_transfer/kv_connector/utils.py
+  s_53ba11096e03af::t_07111639176af2 173,181
+  s_53ba11096e03af::t_2dcc4c8bd242fb 176
+  s_53ba11096e03af::t_51caae5ca1e1bb 174-175,177-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "c0e6689f2b2a7227883de365b31effecf15be0ac",
+  "prompts": {},
+  "humans": {
+    "h_ad66a26c65370e": {
+      "author": "tiankaijin <tiankaijin1@h-partners.com>"
+    }
+  },
+  "sessions": {
+    "s_53ba11096e03af": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a911ef67bc731d7212527bc",
+        "model": "glm-5.3__dev"
+      },
+      "human_author": "tiankaijin <tiankaijin1@h-partners.com>",
+      "custom_attributes": {
+        "tool_id": "Edit",
+        "client_type": "ide",
+        "tool_use_id": "6a996a8770169d284d63410a",
+        "external_session_id": "6a911ef67bc731d7212527bc",
+        "source_scene": "unknown",
+        "edit_kind": "file_edit",
+        "tool_type": "agent",
+        "operation_id": "6a996a8770169d284d63410a",
+        "runtime_client": "trae-tob-git-ai",
+        "dedupe_key": "6a911ef67bc731d7212527bc:6a996a8770169d284d63410a:afterEdit:81a20da7",
+        "session_id": "6a911ef67bc731d7212527bc"
+      }
+    }
+  }
+}
