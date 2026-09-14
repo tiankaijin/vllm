@@ -11,6 +11,7 @@ vllm/v1/outputs.py
   s_af24a17dc67072::t_cbb82e530c3b2c 428-436
 vllm/v1/worker/kv_connector_model_runner_mixin.py
   s_af24a17dc67072::t_7ae6a5b4057a6f 95-99,103,107,109-114
+  s_af24a17dc67072::t_d5019e7cabd595 101-102,104-106
 vllm/v1/executor/multiproc_executor.py
   s_af24a17dc67072::t_2e3bc7f030be5f 72,78-89,440-441,450-490,1030,1042-1060,1119
 vllm/v1/worker/gpu_model_runner.py
@@ -37,16 +38,16 @@ vllm/v1/core/sched/scheduler.py
       },
       "human_author": null,
       "custom_attributes": {
-        "display_model_name": "GLM-5.3",
-        "runtime_client": "trae-tob-git-ai",
-        "client_type": "ide",
-        "source_scene": "agent",
         "operation_id": "6aa3b8988fe7cad2b452c0fb",
-        "tool_name": "Edit",
+        "source_scene": "agent",
         "external_session_id": "6aa362f38fe7cad2b452bd7b",
+        "runtime_client": "trae-tob-git-ai",
         "session_id": "6aa362f38fe7cad2b452bd7b",
-        "tool_use_id": "6aa3b8988fe7cad2b452c0fb",
-        "edit_kind": "file_edit"
+        "tool_name": "Edit",
+        "display_model_name": "GLM-5.3",
+        "client_type": "ide",
+        "edit_kind": "file_edit",
+        "tool_use_id": "6aa3b8988fe7cad2b452c0fb"
       }
     }
   }
