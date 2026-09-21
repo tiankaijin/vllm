@@ -1001,6 +1001,9 @@ class WorkerProc:
         FAILURE = auto()
         FAILURE_WITH_KV_OUTPUT = auto()
 
+    # FT testing: one-shot flag for fault injection in enqueue_output.
+    _ft_fault_injected = False
+
     def enqueue_output(self, output: Any):
         """Prepares output from the worker and enqueues it to the
         worker_response_mq. If the output is an Exception, it is
@@ -1008,6 +1011,22 @@ class WorkerProc:
         """
         if isinstance(output, AsyncModelRunnerOutput):
             try:
+                # FT testing: one-shot fault injection on the decode
+                # (kv_consumer) worker once finished_recving is non-empty.
+                # Raised before get_output() so the except branch below still
+                # sees an AsyncModelRunnerOutput and can extract the KV state,
+                # turning this into a FAILURE_WITH_KV_OUTPUT response.
+                kv_out = output.get_kv_connector_output()
+                if (
+                    not WorkerProc._ft_fault_injected
+                    and self.worker.vllm_config.kv_transfer_config.is_kv_consumer
+                    and kv_out is not None
+                    and kv_out.finished_recving
+                ):
+                    WorkerProc._ft_fault_injected = True
+                    raise RuntimeError(
+                        "Injected fault: kv_consumer finished recving"
+                    )
                 output = output.get_output()
             except Exception as e:
                 logger.exception("Error getting async model runner output")
