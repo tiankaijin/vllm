@@ -1011,23 +1011,21 @@ class WorkerProc:
         """
         if isinstance(output, AsyncModelRunnerOutput):
             try:
+                output = output.get_output()
                 # FT testing: one-shot fault injection on the decode
                 # (kv_consumer) worker once finished_recving is non-empty.
-                # Raised before get_output() so the except branch below still
-                # sees an AsyncModelRunnerOutput and can extract the KV state,
-                # turning this into a FAILURE_WITH_KV_OUTPUT response.
-                kv_out = output.get_kv_connector_output()
                 if (
                     not WorkerProc._ft_fault_injected
                     and self.worker.vllm_config.kv_transfer_config.is_kv_consumer
-                    and kv_out is not None
-                    and kv_out.finished_recving
+                    and isinstance(output, ModelRunnerOutput)
+                    and output.kv_connector_output is not None
+                    and output.kv_connector_output.finished_recving
                 ):
                     WorkerProc._ft_fault_injected = True
-                    raise RuntimeError(
-                        "Injected fault: kv_consumer finished recving"
+                    output = ExceptionWithKVConnectorOutput(
+                        "Injected fault: kv_consumer finished recving",
+                        output.kv_connector_output,
                     )
-                output = output.get_output()
             except Exception as e:
                 logger.exception("Error getting async model runner output")
                 kv_connector_output = output.get_kv_connector_output()
