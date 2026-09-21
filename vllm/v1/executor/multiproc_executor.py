@@ -1014,17 +1014,33 @@ class WorkerProc:
                 output = output.get_output()
                 # FT testing: one-shot fault injection on the decode
                 # (kv_consumer) worker once finished_recving is non-empty.
+                _kv_out = (
+                    output.kv_connector_output
+                    if isinstance(output, ModelRunnerOutput)
+                    else None
+                )
+                logger.info(
+                    "FT-DBG rank=%s injected=%s is_consumer=%s output_type=%s "
+                    "kv_out=%s finished_recving=%s finished_sending=%s",
+                    self.rank,
+                    WorkerProc._ft_fault_injected,
+                    self.worker.vllm_config.kv_transfer_config.is_kv_consumer,
+                    type(output).__name__,
+                    _kv_out is not None,
+                    _kv_out.finished_recving if _kv_out else None,
+                    _kv_out.finished_sending if _kv_out else None,
+                )
                 if (
                     not WorkerProc._ft_fault_injected
                     and self.worker.vllm_config.kv_transfer_config.is_kv_consumer
                     and isinstance(output, ModelRunnerOutput)
-                    and output.kv_connector_output is not None
-                    and output.kv_connector_output.finished_recving
+                    and _kv_out is not None
+                    and _kv_out.finished_recving
                 ):
                     WorkerProc._ft_fault_injected = True
                     output = ExceptionWithKVConnectorOutput(
                         "Injected fault: kv_consumer finished recving",
-                        output.kv_connector_output,
+                        _kv_out,
                     )
             except Exception as e:
                 logger.exception("Error getting async model runner output")
