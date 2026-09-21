@@ -1011,9 +1011,25 @@ class WorkerProc:
                 output = output.get_output()
             except Exception as e:
                 logger.exception("Error getting async model runner output")
-                output = e
+                kv_connector_output = output.get_kv_connector_output()
+                if (
+                    kv_connector_output is not None
+                    and not kv_connector_output.is_empty()
+                ):
+                    output = ExceptionWithKVConnectorOutput(
+                        str(e), kv_connector_output
+                    )
+                else:
+                    output = e
 
-        if isinstance(output, Exception):
+        if isinstance(output, ExceptionWithKVConnectorOutput):
+            # FT scenario: worker failed but we extracted KV connector state
+            # so that KV transfer progress is not lost.
+            result = (
+                WorkerProc.ResponseStatus.FAILURE_WITH_KV_OUTPUT,
+                output.kv_connector_output,
+            )
+        elif isinstance(output, Exception):
             result = (WorkerProc.ResponseStatus.FAILURE, str(output))
         else:
             result = (WorkerProc.ResponseStatus.SUCCESS, output)
