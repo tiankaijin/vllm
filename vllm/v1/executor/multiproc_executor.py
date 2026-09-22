@@ -1012,36 +1012,6 @@ class WorkerProc:
         if isinstance(output, AsyncModelRunnerOutput):
             try:
                 output = output.get_output()
-                # FT testing: one-shot fault injection on the decode
-                # (kv_consumer) worker once finished_recving is non-empty.
-                _kv_out = (
-                    output.kv_connector_output
-                    if isinstance(output, ModelRunnerOutput)
-                    else None
-                )
-                logger.info(
-                    "FT-DBG rank=%s injected=%s is_consumer=%s output_type=%s "
-                    "kv_out=%s finished_recving=%s finished_sending=%s",
-                    self.rank,
-                    WorkerProc._ft_fault_injected,
-                    self.worker.vllm_config.kv_transfer_config.is_kv_consumer,
-                    type(output).__name__,
-                    _kv_out is not None,
-                    _kv_out.finished_recving if _kv_out else None,
-                    _kv_out.finished_sending if _kv_out else None,
-                )
-                if (
-                    not WorkerProc._ft_fault_injected
-                    and self.worker.vllm_config.kv_transfer_config.is_kv_consumer
-                    and isinstance(output, ModelRunnerOutput)
-                    and _kv_out is not None
-                    and _kv_out.finished_recving
-                ):
-                    WorkerProc._ft_fault_injected = True
-                    output = ExceptionWithKVConnectorOutput(
-                        "Injected fault: kv_consumer finished recving",
-                        _kv_out,
-                    )
             except Exception as e:
                 logger.exception("Error getting async model runner output")
                 kv_connector_output = output.get_kv_connector_output()
@@ -1054,6 +1024,32 @@ class WorkerProc:
                     )
                 else:
                     output = e
+
+        # FT testing: one-shot fault injection on the decode (kv_consumer)
+        # worker once finished_recving is non-empty. Must cover plain
+        # ModelRunnerOutput too: finished_recving surfaces on no-forward
+        # (empty) steps, whose output is not an AsyncModelRunnerOutput.
+        if (
+            isinstance(output, ModelRunnerOutput)
+            and not WorkerProc._ft_fault_injected
+            and self.worker.vllm_config.kv_transfer_config.is_kv_consumer
+        ):
+            _kv_out = output.kv_connector_output
+            logger.info(
+                "FT-DBG rank=%s output_type=%s kv_out=%s "
+                "finished_recving=%s finished_sending=%s",
+                self.rank,
+                type(output).__name__,
+                _kv_out is not None,
+                _kv_out.finished_recving if _kv_out else None,
+                _kv_out.finished_sending if _kv_out else None,
+            )
+            if _kv_out is not None and _kv_out.finished_recving:
+                WorkerProc._ft_fault_injected = True
+                output = ExceptionWithKVConnectorOutput(
+                    "Injected fault: kv_consumer finished recving",
+                    _kv_out,
+                )
 
         if isinstance(output, ExceptionWithKVConnectorOutput):
             # FT scenario: worker failed but we extracted KV connector state
