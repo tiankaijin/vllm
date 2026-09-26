@@ -42,7 +42,7 @@ from vllm.distributed.parallel_state import (
     model_parallel_is_initialized,
 )
 from vllm.envs import enable_envs_cache
-from vllm.logger import init_logger
+from vllm.logger import configure_logging, init_logger
 from vllm.platforms import current_platform
 from vllm.tracing import instrument, maybe_init_worker_tracer
 from vllm.utils import numa_utils
@@ -69,10 +69,27 @@ from vllm.utils.torch_utils import (
 from vllm.v1.core.sched.output import GrammarOutput, SchedulerOutput
 from vllm.v1.executor.abstract import Executor, FailureCallback
 from vllm.v1.executor.vllm_net_devices import set_worker_net_device
-from vllm.v1.outputs import AsyncModelRunnerOutput, DraftTokenIds, ModelRunnerOutput
+from vllm.v1.outputs import (
+    AsyncModelRunnerOutput,
+    DraftTokenIds,
+    KVConnectorOutput,
+    ModelRunnerOutput,
+)
 from vllm.v1.worker.worker_base import WorkerWrapperBase
 
 logger = init_logger(__name__)
+
+
+class ExceptionWithKVConnectorOutput(Exception):
+    """Exception that carries KV connector output for fault tolerance.
+    
+    When a worker fails but KV transfer state needs to be preserved,
+    this exception is used to pass the kv_connector_output along with
+    the error information.
+    """
+    def __init__(self, error_msg: str, kv_connector_output: KVConnectorOutput | None):
+        super().__init__(error_msg)
+        self.kv_connector_output = kv_connector_output
 
 
 class FutureWrapper(Future):
@@ -369,7 +386,9 @@ class MultiprocExecutor(Executor):
     def take_draft_token_ids(self) -> DraftTokenIds | None:
         # OPTIMIZATION: Get output only from a single worker (output_rank)
         return self.collective_rpc(
-            "take_draft_token_ids", unique_reply_rank=self.output_rank
+            "take_draft_token_ids",
+            unique_reply_rank=self.output_rank,
+            timeout=envs.VLLM_EXECUTE_MODEL_TIMEOUT_SECONDS,
         )
 
     def collective_rpc(  # type: ignore[override]
@@ -425,6 +444,8 @@ class MultiprocExecutor(Executor):
 
         def get_response():
             responses = []
+            has_failure = False
+            
             for mq in response_mqs:
                 dequeue_timeout = (
                     None if deadline is None else max(0.0, deadline - time.monotonic())
@@ -433,12 +454,50 @@ class MultiprocExecutor(Executor):
                     status, result = mq.dequeue(timeout=dequeue_timeout)
                 except TimeoutError as e:
                     raise TimeoutError(f"RPC call to {method} timed out.") from e
-                if status != WorkerProc.ResponseStatus.SUCCESS:
-                    raise RuntimeError(
-                        f"Worker failed with error '{result}', please check the"
-                        " stack trace above for the root cause"
-                    )
-                responses.append(result)
+                
+                has_kv = kv_output_aggregator is not None
+
+                if status == WorkerProc.ResponseStatus.FAILURE_WITH_KV_OUTPUT:
+                    if (
+                        not self.vllm_config.parallel_config.enable_fault_tolerance
+                        or self.is_failed
+                        or not has_kv
+                    ):
+                        raise RuntimeError("Worker failed with KV connector output")
+                    has_failure = True
+                    assert isinstance(result, KVConnectorOutput)
+                    responses.append(result)
+                elif status != WorkerProc.ResponseStatus.SUCCESS:
+                    if (
+                        not self.vllm_config.parallel_config.enable_fault_tolerance
+                        or self.is_failed
+                        or not has_kv
+                    ):
+                        raise RuntimeError(
+                            f"Worker failed with error '{result}', please check the"
+                            " stack trace above for the root cause"
+                        )
+                    has_failure = True
+                else:
+                    responses.append(result)
+            
+            # If any worker failed, extract KV connector outputs, merge them,
+            # then raise exception
+            if has_failure:
+                kv_connector_outputs = []
+                for resp in responses:
+                    if isinstance(resp, KVConnectorOutput):
+                        kv_connector_outputs.append(resp)
+                    elif resp is not None and hasattr(resp, 'kv_connector_output'):
+                        kv_output = resp.kv_connector_output
+                        if kv_output is not None:
+                            kv_connector_outputs.append(kv_output)
+                
+                if kv_connector_outputs and kv_output_aggregator is not None:
+                    kv_output_aggregator.merge_kv_connector_output(kv_connector_outputs)
+                
+                raise RuntimeError("One or more workers failed")
+            
             return responses[0] if output_rank is not None else responses
 
         future = FutureWrapper(
@@ -853,6 +912,9 @@ class WorkerProc:
     def worker_main(*args, **kwargs):
         """Worker initialization and execution loops.
         This runs a background process"""
+        if logging_config := getattr(kwargs["vllm_config"], "logging_config", None):
+            configure_logging(logging_config)
+
         # Signal handler used for graceful termination.
         # SystemExit exception is only raised once to allow this and worker
         # processes to terminate without error
@@ -977,6 +1039,7 @@ class WorkerProc:
     class ResponseStatus(Enum):
         SUCCESS = auto()
         FAILURE = auto()
+        FAILURE_WITH_KV_OUTPUT = auto()
 
     def enqueue_output(self, output: Any):
         """Prepares output from the worker and enqueues it to the
@@ -988,9 +1051,25 @@ class WorkerProc:
                 output = output.get_output()
             except Exception as e:
                 logger.exception("Error getting async model runner output")
-                output = e
+                kv_connector_output = output.get_kv_connector_output()
+                if (
+                    kv_connector_output is not None
+                    and not kv_connector_output.is_empty()
+                ):
+                    output = ExceptionWithKVConnectorOutput(
+                        str(e), kv_connector_output
+                    )
+                else:
+                    output = e
 
-        if isinstance(output, Exception):
+        if isinstance(output, ExceptionWithKVConnectorOutput):
+            # FT scenario: worker failed but we extracted KV connector state
+            # so that KV transfer progress is not lost.
+            result = (
+                WorkerProc.ResponseStatus.FAILURE_WITH_KV_OUTPUT,
+                output.kv_connector_output,
+            )
+        elif isinstance(output, Exception):
             result = (WorkerProc.ResponseStatus.FAILURE, str(output))
         else:
             result = (WorkerProc.ResponseStatus.SUCCESS, output)
