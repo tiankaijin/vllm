@@ -4,6 +4,7 @@
 
 import json
 import threading
+import time
 from collections.abc import Callable
 from typing import TYPE_CHECKING, cast
 
@@ -87,8 +88,24 @@ class EngineCoreSentinel:
         )
 
         engine = self.engine
-        aborted = engine.scheduler.finish_requests(None, RequestStatus.FINISHED_ABORTED)
-        engine._send_abort_outputs(aborted)
+        scheduler = cast(Scheduler, engine.scheduler)
+        ft_config = self.parallel_config.fault_tolerance_config
+        # Evict the KV blocks that the failed step may have partially written.
+        self._clear_contaminated_blocks()
+
+        if ft_config.request_failure_policy == "recompute":
+            timestamp = time.monotonic()
+            while scheduler.running:
+                request = scheduler.running.pop()
+                scheduler._preempt_request(request, timestamp)
+            # Clear abandoned outputs: already-preempted requests also wait
+            # for stale outputs that recovery discards.
+            for request in scheduler.requests.values():
+                request.num_in_flight_tokens = 0
+                request.num_stale_output_tokens = 0
+        else:
+            aborted = scheduler.finish_requests(None, RequestStatus.FINISHED_ABORTED)
+            engine._send_abort_outputs(aborted)
 
         if (
             hasattr(engine.model_executor, "is_failed")
@@ -139,6 +156,32 @@ class EngineCoreSentinel:
             )
         engine.batch_queue.clear()
 
+    def _clear_contaminated_blocks(self) -> None:
+        """Evict KV blocks possibly contaminated by the failed step."""
+        scheduler = cast(Scheduler, self.engine.scheduler)
+        kv_cache_manager = scheduler.kv_cache_manager
+        dirty_block_ids: set[int] = set()
+
+        for request in scheduler.running:
+            num_written = request.num_in_flight_tokens
+            if num_written <= 0:
+                continue
+            start = max(request.num_computed_tokens - num_written, 0)
+            end = request.num_computed_tokens - 1
+
+            for mgr in kv_cache_manager.coordinator.single_type_managers:
+                blocks = mgr.req_to_blocks.get(request.request_id)
+                if not blocks:
+                    continue
+                blk_start = start // mgr.block_size
+                blk_end = end // mgr.block_size
+                for blk in blocks[blk_start : blk_end + 1]:
+                    if not blk.is_null:
+                        dirty_block_ids.add(blk.block_id)
+
+        if dirty_block_ids:
+            kv_cache_manager.evict_blocks(dirty_block_ids)
+
     def _push_status(self):
         """Push current health to the client so it can refresh its cache."""
         payload = {"id": self.engine_index, "status": self.status_type.name.lower()}
@@ -158,6 +201,11 @@ class EngineCoreSentinel:
         executor = engine.model_executor
 
         ft_request.params.update(self._reinit_dp_group())
+        if ft_request.params.get("abort", False):
+            aborted = engine.scheduler.finish_requests(
+                None, RequestStatus.FINISHED_ABORTED
+            )
+            engine._send_abort_outputs(aborted)
         if hasattr(engine, "step_counter"):
             engine.step_counter = 0
 
